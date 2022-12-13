@@ -110,7 +110,6 @@ dist
 code/node_modules
 .vscode/
 .idea/
-thunder-tests/
 
 # Act
 .actrc
