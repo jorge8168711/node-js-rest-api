@@ -4,11 +4,18 @@
 
 const environments = {
   development: {
-    port: 3000,
+    httpPort: 3000,
+    httpsPort: 3001,
     envName: 'development'
   },
   stage: {
-    port: 5000,
+    httpPort: 3000,
+    httpsPort: 3001,
+    envName: 'stage'
+  },
+  production: {
+    httpPort: 5000,
+    httpsPort: 5001,
     envName: 'stage'
   }
 }

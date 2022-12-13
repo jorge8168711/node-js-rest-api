@@ -117,3 +117,6 @@ thunder-tests/
 .env
 .secrets
 .DS_Store
+
+*.pem
+*.key
