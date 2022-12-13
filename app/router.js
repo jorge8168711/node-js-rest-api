@@ -1,13 +1,13 @@
 const handlers = {}
 
-// Sample handler
-handlers.sample = (data, func) => {
+// Ping Handler
+handlers.ping = (data, callback) => {
   // Callback a http status code, and a payload object
-  func(406, { name: 'Sample handler' })
+  callback(null, { status: 200, data: {} })
 }
 
-handlers.notFound = (data, func) => {
-  func(404)
+handlers.notFound = (data, callback) => {
+  callback(new Error('404 Not Found'), { status: 404, data: {} })
 }
 
 function getHandler (path) {

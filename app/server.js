@@ -52,13 +52,19 @@ function configureServer (req, res) {
     }
 
     // Route the request to the handler specified in the router
-    handler(data, (statusCode, payload) => {
+    handler(data, (error, response) => {
+      const { status: statusCode, data } = response
+
       // Use the status code called back by the handler, or default to 200
       const status = typeof statusCode === 'number' ? statusCode : 200
-      const payloadData = typeof payload === 'object' ? payload : {}
+      const payloadData = typeof data === 'object' ? response : {}
 
       // Convert the payload to a string
-      const stringPayload = JSON.stringify(payloadData)
+      let stringPayload = JSON.stringify(payloadData)
+
+      if (error) {
+        stringPayload = JSON.stringify({ ...response, message: error.message })
+      }
 
       // Return the response
       // we use the built in writeHead method that came on every response object received by the
