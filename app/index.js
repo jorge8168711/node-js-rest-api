@@ -7,6 +7,7 @@ const http = require('http')
 const url = require('url')
 const router = require('./router')
 const StringDecoder = require('string_decoder').StringDecoder
+const config = require('./config')
 
 // the server should respond to all request with a string
 const server = http.createServer((req, res) => {
@@ -58,7 +59,7 @@ const server = http.createServer((req, res) => {
 
     // Route the request to the handler specified in the router
     handler(data, (statusCode, payload) => {
-    // Use the status code called back by the handler, or default to 200
+      // Use the status code called back by the handler, or default to 200
       const status = typeof statusCode === 'number' ? statusCode : 200
       const payloadData = typeof payload === 'object' ? payload : {}
 
@@ -75,6 +76,6 @@ const server = http.createServer((req, res) => {
 })
 
 // Start the server, and have it listen on the port 3000
-server.listen(3000, () => {
-  console.log('the server is running on the port 3000')
+server.listen(config.port, () => {
+  console.log(`the server is running on the port ${config.port} in ${config.envName} mode`)
 })
