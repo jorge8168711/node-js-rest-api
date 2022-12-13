@@ -110,10 +110,12 @@ dist
 code/node_modules
 .vscode/
 .idea/
-thunder-tests/
 
 # Act
 .actrc
 .env
 .secrets
 .DS_Store
+
+*.pem
+*.key

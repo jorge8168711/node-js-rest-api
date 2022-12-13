@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "569b150a-17c7-4bbd-8c6a-1bce69c5ea85",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sample/other",
+    "url": "{{base_url:http}}/ping",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-23T18:29:15.823Z",
+    "modified": "2022-12-13T03:26:57.839Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

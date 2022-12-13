@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "f0589a79-bb7d-4de0-96c9-0f79d8dd0f23",
+    "name": "development",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2022-12-13T02:41:52.277Z",
+    "modified": "2022-12-13T02:41:52.277Z",
+    "data": [
+      {
+        "name": "base_url:http",
+        "value": "http://localhost:3000"
+      },
+      {
+        "name": "base_url:https",
+        "value": "https://localhost:3001"
+      }
+    ]
+  }
+]
