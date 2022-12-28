@@ -6,6 +6,13 @@
 const http = require('http')
 const https = require('https')
 const fs = require('fs')
+const path = require('path')
+
+const _data = require('./lib/data')
+const dataConfig = { dir: 'test', file: 'test', data: { name: 'an updated 999' } }
+_data.update(dataConfig, (error, fileDescriptor) => {
+  console.log({ error, fileDescriptor })
+})
 
 const config = require('./config')
 const configureServer = require('./server')
@@ -19,9 +26,10 @@ httpServer.listen(config.httpPort, () => {
 
 // Instantiate the HTTP server
 const httpsServerOptions = {
-  key: fs.readFileSync('app/https/key.pem'),
-  cert: fs.readFileSync('app/https/cert.pem')
+  key: fs.readFileSync(path.join(__dirname, '/https/key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, '/https/cert.pem'))
 }
+
 const httpsServer = https.createServer(httpsServerOptions, configureServer)
 
 // Start HTTPS server
