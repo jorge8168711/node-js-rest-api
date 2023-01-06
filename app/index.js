@@ -5,14 +5,9 @@
 // Dependencies
 const http = require('http')
 const https = require('https')
+
 const fs = require('fs')
 const path = require('path')
-
-const _data = require('./lib/data')
-const dataConfig = { dir: 'test', file: 'test', data: { name: 'an updated 999' } }
-_data.update(dataConfig, (error, fileDescriptor) => {
-  console.log({ error, fileDescriptor })
-})
 
 const config = require('./config')
 const configureServer = require('./server')
@@ -31,7 +26,6 @@ const httpsServerOptions = {
 }
 
 const httpsServer = https.createServer(httpsServerOptions, configureServer)
-
 // Start HTTPS server
 httpsServer.listen(config.httpsPort, () => {
   console.log(`the server is running on the port ${config.httpsPort} in ${config.envName} mode`)

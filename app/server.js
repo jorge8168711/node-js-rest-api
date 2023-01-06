@@ -2,7 +2,7 @@
 
 const url = require('url')
 const StringDecoder = require('string_decoder').StringDecoder
-const router = require('./router')
+const handlers = require('./lib/handlers')
 
 function configureServer (req, res) {
   // Deprecated way to get the url data
@@ -44,7 +44,7 @@ function configureServer (req, res) {
     buffer += decoder.end()
 
     // Chose the handler this request should go. If one is not found use not found handler.
-    const handler = router.getHandler(trimmedPath)
+    const handler = handlers.getHandler(trimmedPath)
 
     // Construct the data object to send to the handler
     const data = {
