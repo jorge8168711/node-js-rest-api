@@ -89,6 +89,20 @@ const updateFile = (fileDescriptor, newData = '') => {
   return resultPromise
 }
 
+const deleteFile = async (path) => {
+  const resultPromise = new Promise((resolve, reject) => {
+    fs.unlink(path, (error) => {
+      if (!error) {
+        resolve(`The file ${path} was deleted successfully.`)
+      } else {
+        reject(new Error(`Error deleting the file ${path}`))
+      }
+    })
+  })
+
+  return resultPromise
+}
+
 // Write data to a file
 lib.create = async (config = {}, callback) => {
   try {
@@ -129,6 +143,18 @@ lib.update = async (config, callback) => {
     callback(null, response)
   } catch (error) {
     callback(error, null)
+    console.error(error)
+  }
+}
+
+lib.delete = async (config, callback) => {
+  const { dir, file } = config
+
+  try {
+    await deleteFile(`${lib.baseDir}/${dir}/${file}.json`)
+    callback(null)
+  } catch (error) {
+    callback(error)
     console.error(error)
   }
 }
